@@ -1,6 +1,9 @@
 -- Define the path to lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
+-- Define your plugins
+local plugins = require('custom.plugins')
+
 -- Check if lazy.nvim is not installed
 if not vim.uv.fs_stat(lazypath) then
     local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -19,8 +22,6 @@ if not success then
     error('Failed to load lazy.nvim: ' .. lazy)
 end
 
--- Define your plugins
-local plugins = require('plugins')
 
 -- Setup lazy.nvim with plugins
 lazy.setup(plugins, {

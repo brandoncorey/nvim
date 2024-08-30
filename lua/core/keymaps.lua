@@ -7,13 +7,13 @@ vim.api.nvim_set_keymap('n', '<leader>dn', ':lua vim.diagnostic.goto_next()<CR>'
 vim.api.nvim_set_keymap('n', '<leader>dp', ':lua vim.diagnostic.goto_prev()<CR>', { desc = '[D]iagnostics [P]revious', noremap = true, silent = true })
 
 -- Terminal mode escape
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode', noremap = true, silent = true })
 
 -- Window navigation
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window', noremap = true, silent = true })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window', noremap = true, silent = true })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window', noremap = true, silent = true })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window', noremap = true, silent = true })
 
 -- Insert mode navigation
 vim.keymap.set('i', '<C-h>', '<left>', { noremap = true, silent = true })
@@ -24,11 +24,6 @@ vim.keymap.set('i', '<C-e>', '<End>', { noremap = true, silent = true })
 vim.keymap.set('i', '<C-b>', '<Home>', { noremap = true, silent = true })
 
 -- Buffer navigation
-vim.keymap.set('n', '<leader>n', ':bnext<CR>', { desc = 'Move to next buffer' })
-vim.keymap.set('n', '<leader>p', ':bprevious<CR>', { desc = 'Move to next previous' })
-vim.keymap.set('n', '<leader>x', ':bdelete<CR>', { desc = 'Close current buffer' })
-
--- Lsp
-vim.keymap.set('n', '<leader>fm', function()
-  vim.lsp.buf.format { async = false }
-end, { desc = '[F]ormat [M]anually' })
+vim.keymap.set('n', '<leader>n', ':bnext<CR>', { desc = 'Move to next buffer', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>p', ':bprevious<CR>', { desc = 'Move to next previous', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>x', ':bdelete<CR>', { desc = 'Close current buffer', noremap = true, silent = true })

@@ -31,5 +31,3 @@ require('mason-null-ls').setup {
 require('null-ls').setup {
     sources = {}, -- anything not supported by mason-null-ls
 }
-
-return {}

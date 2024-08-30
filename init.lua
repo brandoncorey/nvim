@@ -1,11 +1,11 @@
 -- Load opts
-require 'options'
+require 'core.options'
 
 -- Load keymaps
-require 'keymaps'
+require 'core.keymaps'
 
 -- Load autocmds
-require 'autocmds'
+require 'core.autocmds'
 
 -- Load plugin manager
 require 'custom.lazy'
