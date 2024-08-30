@@ -462,6 +462,11 @@ require('lazy').setup({
           --  For example, in C this would take you to the header.
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+          -- format manually
+          map('<leader>fm', function()
+            vim.lsp.buf.format { async = false }
+          end, '[F]ormat [M]anually')
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
@@ -625,12 +630,12 @@ require('lazy').setup({
         sources = {}, -- anything not supported by mason-null-ls
       }
 
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        pattern = '*', -- Apply to all files or specify a pattern like "*.js" or "*.ts"
-        callback = function()
-          vim.lsp.buf.format { async = false }
-        end,
-      })
+      -- vim.api.nvim_create_autocmd('BufWritePre', {
+      --   pattern = '*', -- Apply to all files or specify a pattern like "*.js" or "*.ts"
+      --   callback = function()
+      --     vim.lsp.buf.format { async = false }
+      --   end,
+      -- })
     end,
   },
 
