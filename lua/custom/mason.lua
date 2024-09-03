@@ -34,45 +34,20 @@ local function has_eslint_config()
   return false
 end
 
+local builtin_prettier_eslint = require 'custom.lsp.builtins.prettier-eslint'
+
+local null_ls = require 'null-ls'
+null_ls.setup {
+  sources = {},
+}
+
 require('mason-null-ls').setup {
   ensure_installed = lsp.ensure_installed,
   automatic_installation = false,
-  handlers = {
+  handlers = { -- swapping in custom prettier based on presence of eslint
     prettierd = function()
-      local has_eslint = has_eslint_config()
-      local null_ls = require 'null-ls'
-
-      if has_eslint then
-        null_ls.register {
-          method = null_ls.methods.FORMATTING,
-          filetypes = {
-            'javascript',
-            'typescript',
-            'javascriptreact',
-            'typescriptreact',
-            'vue',
-            'css',
-            'scss',
-            'less',
-            'html',
-            'json',
-            'jsonc',
-            'yaml',
-            'markdown',
-            'graphql',
-            'handlebars',
-          },
-          -- generator goes here
-          generator = {
-            fn = function(params)
-              return {
-                command = 'prettier-eslint',
-                args = { '--stdin', '--stdin-filepath', params.bufname },
-                to_stdin = true,
-              }
-            end,
-          },
-        }
+      if has_eslint_config() then
+        null_ls.register(builtin_prettier_eslint)
       else
         null_ls.register(null_ls.builtins.formatting.prettierd)
       end
