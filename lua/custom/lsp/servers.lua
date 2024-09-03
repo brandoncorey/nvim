@@ -4,7 +4,11 @@ return {
     pyright = {},
     -- rust_analyzer = {},
     --
-    tsserver = {},
+    tsserver = {
+        root_dir = function(fname)
+            return require("lspconfig.util").root_pattern("package.json", ".git", "tsconfig.json")(fname)
+        end,
+    },
     lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
@@ -20,4 +24,3 @@ return {
         },
     },
 }
-

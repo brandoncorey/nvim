@@ -96,7 +96,8 @@ return {
             'hrsh7th/cmp-nvim-lsp',
         },
         config = function()
-            -- Your LSP configuration here
+            require "custom.mason"
+            keymaps.bind_formatter()
         end,
     },
 

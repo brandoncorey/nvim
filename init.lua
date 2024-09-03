@@ -9,6 +9,3 @@ require 'core.autocmds'
 
 -- Load plugin manager
 require 'custom.lazy'
-
--- Load other plugin manager lul
-require 'custom.mason'
