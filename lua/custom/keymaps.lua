@@ -75,11 +75,15 @@ local function bind_lsp(auto_cmd_event)
         desc = 'LSP: [G]oto [D]eclaration',
     })
 
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {
+        buffer = auto_cmd_event.buf,
+        desc = 'LSP: [G]oto [D]efinition',
+    })
 
     if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-    vim.keymap.set('n', '<leader>th', function()
-                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = auto_cmd_event.buf })
-            end, { desc = '[T]oggle Inlay [H]ints' })
+        vim.keymap.set('n', '<leader>th', function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = auto_cmd_event.buf })
+        end, { desc = '[T]oggle Inlay [H]ints' })
     end
 end
 
