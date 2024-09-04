@@ -23,6 +23,7 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.termguicolors = true
+vim.o.laststatus = 3
 
 -- Clipboard settings
 vim.schedule(function()
