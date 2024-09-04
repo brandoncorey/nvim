@@ -53,6 +53,14 @@ return {
     },
     config = function()
       require('telescope').setup {
+        defaults = {
+          layout_strategy = 'horizontal',
+          layout_config = {
+            horizontal = {
+              preview_width = 0.55, -- Makes the preview window 70% of the total width
+            },
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
