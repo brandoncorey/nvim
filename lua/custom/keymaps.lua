@@ -10,7 +10,7 @@ end
 -- Manual format keybind
 local function bind_formatter()
   vim.keymap.set('n', '<leader>fm', function()
-    vim.lsp.buf.format { async = false, timeout_ms = 5000 }
+    vim.lsp.buf.format { async = false, timeout_ms = 10000 }
   end, { desc = '[F]ormat [M]anually' })
 end
 
