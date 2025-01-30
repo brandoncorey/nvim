@@ -4,7 +4,7 @@ return {
     pyright = {},
     -- rust_analyzer = {},
     --
-    tsserver = {
+    typescript_language_server = {
         root_dir = function(fname)
             return require("lspconfig.util").root_pattern("package.json", ".git", "tsconfig.json")(fname)
         end,
@@ -23,4 +23,5 @@ return {
             },
         },
     },
+    tailwindcss = {}, -- Added Tailwind CSS language server
 }
