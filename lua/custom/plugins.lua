@@ -287,6 +287,7 @@ return {
     'APZelos/blamer.nvim',
     config = function()
       vim.g.blamer_enabled = true
+      vim.g.blamer_show_in_insert_modes = false
     end,
     lazy = false,
   },
@@ -295,7 +296,6 @@ return {
     config = function()
       require('supermaven-nvim').setup {
         keymaps = keymaps.bind_super_maven(),
-        disable_inline_completion = false, -- disables inline completion for use with cmp
       }
     end,
   },
