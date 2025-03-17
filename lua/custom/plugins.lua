@@ -149,12 +149,12 @@ return {
         sources = {
           {
             name = 'lazydev',
-            -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
             group_index = 0,
           },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'supermaven' },
         },
       }
     end,
@@ -169,7 +169,12 @@ return {
     end,
   },
 
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  {
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = { signs = false },
+  },
 
   {
     'echasnovski/mini.nvim',
@@ -184,7 +189,19 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+      },
       auto_install = true,
       highlight = {
         enable = true,
@@ -251,7 +268,9 @@ return {
             local space = ' ' -- Space between icon and name
             local name = buf.name
             local available_width = max_width - #space - 1 -- Subtract 1 for the space after the icon
-            local truncated_name = #name > available_width and name:sub(1, available_width - 3) .. '...' or name
+            local truncated_name = #name > available_width
+                and name:sub(1, available_width - 3) .. '...'
+              or name
             return space .. truncated_name
           end,
         },
@@ -270,5 +289,14 @@ return {
       vim.g.blamer_enabled = true
     end,
     lazy = false,
+  },
+  {
+    'supermaven-inc/supermaven-nvim',
+    config = function()
+      require('supermaven-nvim').setup {
+        keymaps = keymaps.bind_super_maven(),
+        disable_inline_completion = false, -- disables inline completion for use with cmp
+      }
+    end,
   },
 }
