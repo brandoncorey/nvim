@@ -4,7 +4,7 @@ return {
     pyright = {},
     -- rust_analyzer = {},
     --
-    typescript_language_server = {
+    ts_ls = {
         root_dir = function(fname)
             return require("lspconfig.util").root_pattern("package.json", ".git", "tsconfig.json")(fname)
         end,
