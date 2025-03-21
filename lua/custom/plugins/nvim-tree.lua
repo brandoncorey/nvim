@@ -1,5 +1,3 @@
-local keymaps = require 'custom.keymaps'
-
 return {
   'nvim-tree/nvim-tree.lua',
   config = function()
@@ -18,7 +16,7 @@ return {
         },
       }
     }
-    keymaps.bind_nvim_tree()
+    require('custom.keymaps.nvim-tree').bind_nvim_tree()
   end,
 }
 

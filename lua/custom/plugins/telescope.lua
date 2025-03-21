@@ -1,5 +1,3 @@
-local keymaps = require 'custom.keymaps'
-
 return {
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
@@ -36,7 +34,7 @@ return {
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
 
-    keymaps.bind_fuzzy()
+    require('custom.keymaps.fuzzy').bind_fuzzy()
   end,
 }
 

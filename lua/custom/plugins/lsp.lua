@@ -1,5 +1,3 @@
-local keymaps = require 'custom.keymaps'
-
 return {
   'folke/lazydev.nvim',
   ft = 'lua',
@@ -28,7 +26,7 @@ return {
     },
     config = function()
       require 'custom.mason'
-      keymaps.bind_formatter()
+      require('custom.keymaps.formatter').bind_formatter()
     end,
   },
 }

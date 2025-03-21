@@ -1,5 +1,3 @@
-local keymaps = require 'custom.keymaps'
-
 return {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
@@ -35,7 +33,7 @@ return {
       -- chosen, you will need to read `:help ins-completion`
       --
       -- No, but seriously. Please read `:help ins-completion`, it is really good!
-      mapping = keymaps.bind_nvim_cmp(),
+      mapping = require("custom.keymaps.cmp").bind_nvim_cmp(),
 
       sources = {
         {

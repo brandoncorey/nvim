@@ -1,5 +1,3 @@
-local keymaps = require('custom.keymaps')
-
 -- Set tab size for specific file types
 vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'javascript', 'typescript', 'lua' },
@@ -26,13 +24,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- NOTE: Remember that Lua is a real programming language, and as such it is possible
         -- to define small helper and utility functions so you don"t have to repeat yourself.
         --
-        keymaps.bind_lsp(event)
+        require('custom.keymaps.lsp').bind_lsp(event)
 
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
         --    See `:help CursorHold` for information about when this is executed
         --
-        -- When you move your cursor, the highlights will be cleared (the second autocommand).
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
@@ -57,10 +54,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
             })
         end
 
-        -- The following code creates a keymap to toggle inlay hints in your
-        -- code, if the language server you are using supports them
-        --
-        -- This may be unwanted, since they displace some of your code
     end,
 })
 
