@@ -7,16 +7,16 @@ return {
     -- for example
     provider = 'copilot',
     copilot = {
-      model = 'gemini-2.0-flash-001',
+      model = 'claude-3.7-sonnet',
     },
     vendors = {
       copilot_o3_mini = {
         __inherited_from = 'copilot',
         model = 'o3-mini',
       },
-      copilot_claude_sonnet = {
+      copilot_gemini = {
         __inherited_from = 'copilot',
-        model = 'claude-3.7-sonnet',
+        model = 'gemini-2.0-flash',
       },
     },
     -- gemini = {
