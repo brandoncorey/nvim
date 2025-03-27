@@ -36,12 +36,12 @@ return {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
     --- The below dependencies are optional,
-    'echasnovski/mini.pick',         -- for file_selector provider mini.pick
+    'echasnovski/mini.pick', -- for file_selector provider mini.pick
     'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
-    'hrsh7th/nvim-cmp',              -- autocompletion for avante commands and mentions
-    'ibhagwan/fzf-lua',              -- for file_selector provider fzf
-    'nvim-tree/nvim-web-devicons',   -- or echasnovski/mini.icons
-    'zbirenbaum/copilot.lua',        -- for providers='copilot'
+    'hrsh7th/nvim-cmp', -- autocompletion for avante commands and mentions
+    'ibhagwan/fzf-lua', -- for file_selector provider fzf
+    'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
+    'zbirenbaum/copilot.lua', -- for providers='copilot'
     'MeanderingProgrammer/render-markdown.nvim',
     {
       -- support for image pasting
@@ -54,9 +54,10 @@ return {
           auto_set_highlight_group = true,
           auto_set_keymaps = true,
           support_paste_from_clipboard = false,
-          minimize_diff = true,         -- Whether to remove unchanged lines when applying a code block
+          minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
           enable_token_counting = true, -- Whether to enable token counting. Default to true.
-          enable_cursor_planning_mode = false,
+          enable_cursor_planning_mode = true,
+          enable_claude_text_editor_tool_mode = true, -- Whether to enable Claude Text Editor Tool Mode.
         },
         -- recommended settings
         default = {
