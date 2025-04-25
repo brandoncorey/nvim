@@ -25,9 +25,15 @@ local function bind_fuzzy()
   vim.keymap.set('n', '<leader>sn', function()
     builtin.find_files { cwd = vim.fn.stdpath 'config' }
   end, { desc = '[S]earch [N]eovim files' })
+  vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
+  vim.keymap.set(
+    'n',
+    '<leader>shc',
+    builtin.command_history,
+    { desc = '[S]earch [H]istory of [C]ommands' }
+  )
 end
 
 return {
   bind_fuzzy = bind_fuzzy,
 }
-

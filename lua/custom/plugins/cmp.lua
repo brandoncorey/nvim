@@ -33,7 +33,7 @@ return {
       -- chosen, you will need to read `:help ins-completion`
       --
       -- No, but seriously. Please read `:help ins-completion`, it is really good!
-      mapping = require("custom.keymaps.cmp").bind_nvim_cmp(),
+      mapping = require('custom.keymaps.cmp').bind_nvim_cmp(),
 
       sources = {
         {
@@ -44,8 +44,8 @@ return {
         { name = 'luasnip' },
         { name = 'path' },
         { name = 'supermaven' },
+        { name = "vim-dadbod-completion", priority = 700 }, -- add new source
       },
     }
   end,
 }
-

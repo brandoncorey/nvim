@@ -63,3 +63,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 --         vim.lsp.buf.format { async = false }
 --     end,
 -- })
+--
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "dbout",
+  callback = function()
+    vim.opt_local.foldenable = false
+  end
+})
