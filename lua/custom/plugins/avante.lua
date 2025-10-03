@@ -1,64 +1,59 @@
+-- Avante.nvim plugin configuration
 return {
   'yetone/avante.nvim',
   event = 'VeryLazy',
-  version = false, -- Never set this value to "*"! Never!
+  version = false, -- Never set this value to *! Never!
+
   opts = {
-    -- add any opts here
+    -- The following options configure the provider and its supported models.
     -- for example
+    --
+    mode = 'legacy',
     provider = 'copilot',
-    copilot = {
-      model = 'claude-3.7-sonnet',
-    },
-    vendors = {
-      copilot_o3_mini = {
-        __inherited_from = 'copilot',
-        model = 'o3-mini',
-      },
-      copilot_gemini = {
-        __inherited_from = 'copilot',
-        model = 'gemini-2.0-flash',
+    providers = {
+      copilot = {
+        model = 'claude-3.7-sonnet', -- your desired model (or use gpt-4o, etc.)
       },
     },
-    -- gemini = {
-    --   model = 'gemini-2.0-flash', -- your desired model (or use gpt-4o, etc.)
-    --   timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
-    --   temperature = 0,
-    --   max_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-    --   --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-    -- },
+    behaviour = {
+
+      auto_suggestions = false, -- Experimental stage
+      auto_set_highlight_group = true,
+      auto_set_keymaps = true,
+      auto_apply_diff_after_generation = true,
+      support_paste_from_clipboard = false,
+      minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
+      enable_token_counting = true, -- Whether to enable token counting. Default to true.
+      auto_approve_tool_permissions = true, -- Default: show permission prompts for all tools
+      enable_fastapply = true, -- Whether to enable fast apply feature
+      enable_cursor_planning_mode = true,
+      enable_claude_text_editor_tool_mode = true, -- Whether to enable Claude Text Editor Tool Mode.
+
+      -- Examples:
+      -- auto_approve_tool_permissions = true,                -- Auto-approve all tools (no prompts)
+      -- auto_approve_tool_permissions = {"bash", "replace_in_file"}, -- Auto-approve specific tools only
+    },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = 'make',
-  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+  -- build = powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false -- for windows
   dependencies = {
-    'nvim-treesitter/nvim-treesitter',
-    'stevearc/dressing.nvim',
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
     --- The below dependencies are optional,
-    'echasnovski/mini.pick', -- for file_selector provider mini.pick
+    'nvim-mini/mini.pick', -- for file_selector provider mini.pick
     'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
     'hrsh7th/nvim-cmp', -- autocompletion for avante commands and mentions
     'ibhagwan/fzf-lua', -- for file_selector provider fzf
+    'stevearc/dressing.nvim', -- for input provider dressing
+    'folke/snacks.nvim', -- for input provider snacks
     'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
     'zbirenbaum/copilot.lua', -- for providers='copilot'
-    'MeanderingProgrammer/render-markdown.nvim',
     {
       -- support for image pasting
       'HakonHarnes/img-clip.nvim',
       event = 'VeryLazy',
       opts = {
-        -- Available
-        behaviour = {
-          auto_suggestions = false, -- Experimental stage
-          auto_set_highlight_group = true,
-          auto_set_keymaps = true,
-          support_paste_from_clipboard = false,
-          minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
-          enable_token_counting = true, -- Whether to enable token counting. Default to true.
-          enable_cursor_planning_mode = true,
-          enable_claude_text_editor_tool_mode = true, -- Whether to enable Claude Text Editor Tool Mode.
-        },
         -- recommended settings
         default = {
           embed_image_as_base64 = false,
@@ -70,6 +65,14 @@ return {
           use_absolute_path = true,
         },
       },
+    },
+    {
+      -- Make sure to set this up properly if you have lazy=true
+      'MeanderingProgrammer/render-markdown.nvim',
+      opts = {
+        file_types = { 'markdown', 'Avante' },
+      },
+      ft = { 'markdown', 'Avante' },
     },
   },
 }

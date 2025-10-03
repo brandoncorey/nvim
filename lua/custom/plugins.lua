@@ -16,5 +16,6 @@ return {
   require 'custom.plugins.supermaven',
   require 'custom.plugins.render-markdown',
   require 'custom.plugins.avante',
+  require 'custom.plugins.copilot',
   require 'custom.plugins.dadbod',
 }
