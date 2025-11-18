@@ -12,7 +12,7 @@ return {
     provider = 'copilot',
     providers = {
       copilot = {
-        model = 'claude-3.7-sonnet', -- your desired model (or use gpt-4o, etc.)
+        model = 'gpt-5-mini', -- your desired model (or use gpt-4o, etc.)
       },
     },
     behaviour = {
