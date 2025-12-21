@@ -1,5 +1,4 @@
 return {
     stylua = {},
-    black = {},
     prettierd = {},
 }
